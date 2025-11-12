@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs251dncj12t"]
+
+[ext_resource type="Script" uid="uid://cqt337bj15x2y" path="res://scripts/InventoryHandler.gd" id="1_qw0r6"]
+[ext_resource type="PackedScene" uid="uid://bhwqbjluy6f71" path="res://scenes/drag_preview.tscn" id="2_hj2ta"]
+[ext_resource type="Script" uid="uid://c1vx8p5k6t0rx" path="res://scripts/InventoryMenu.gd" id="2_ty45s"]
+[ext_resource type="PackedScene" uid="uid://8llwfcuvuhex" path="res://scenes/inventory_tooltip.tscn" id="4_53g1v"]
+
+[sub_resource type="Theme" id="Theme_ty45s"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1403.0
+offset_top = 510.0
+offset_right = 1403.0
+offset_bottom = 510.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ty45s")
+script = ExtResource("1_qw0r6")
+
+[node name="InventoryContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryMenu" type="GridContainer" parent="InventoryContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_ty45s")
+
+[node name="DragPreview" parent="InventoryContainer" instance=ExtResource("2_hj2ta")]
+layout_mode = 2
+
+[node name="InventoryTooltip" parent="InventoryContainer" instance=ExtResource("4_53g1v")]
+visible = false
+layout_mode = 2
